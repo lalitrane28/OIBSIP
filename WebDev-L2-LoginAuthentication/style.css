@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root{
+  --bg-a: #4facfe;
+  --bg-b: #00f2fe;
+  --glass: rgba(255,255,255,0.12);
+  --glass-2: rgba(255,255,255,0.06);
+  --muted: rgba(255,255,255,0.8);
+  --accent: #0ea5e9;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial}
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,var(--bg-a),var(--bg-b));
+  padding:20px;
+  color:#fff;
+}
+
+/* decorative blurred shapes */
+.page-bg{position:fixed;inset:0;pointer-events:none;z-index:0}
+.shape{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.6}
+.shape--one{width:540px;height:540px;left:-8%;top:-6%;background:rgba(255,255,255,0.06)}
+.shape--two{width:420px;height:420px;right:-6%;bottom:-8%;background:rgba(255,255,255,0.04)}
+
+.auth-wrap{width:100%;max-width:980px;padding:32px;display:flex;align-items:center;justify-content:center;z-index:1}
+
+/* Backwards-compatible container/login-box for other pages */
+.container{width:100%;max-width:420px}
+.login-box{background:var(--glass);backdrop-filter:blur(12px);padding:35px;border-radius:20px;box-shadow:0 15px 35px rgba(0,0,0,0.18);color:var(--muted)}
+
+/* Card style used by new layout */
+.card{width:420px;background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));border-radius:14px;padding:28px;backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(2,6,23,0.45);border:1px solid rgba(255,255,255,0.06)}
+.card-header{margin-bottom:12px}
+h1{font-size:22px;margin:0 0 6px}
+.subtitle{color:var(--muted);margin:0 0 16px;font-size:13px}
+
+.wave,.spark{display:inline-block;transform-origin:70% 70%;animation:wave 2s infinite}
+@keyframes wave{0%{transform:rotate(0)}15%{transform:rotate(14deg)}30%{transform:rotate(-8deg)}45%{transform:rotate(14deg)}60%{transform:rotate(-4deg)}100%{transform:rotate(0)}}
+
+.form{display:flex;flex-direction:column}
+.field{display:flex;flex-direction:column;margin-top:12px}
+.field-label{font-size:13px;color:var(--muted);margin-bottom:8px;font-weight:500}
+input[type="email"],input[type="password"],input[type="text"]{padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:rgba(10,14,22,0.35);color:#fff;outline:none;font-size:15px}
+input:focus{box-shadow:0 8px 26px rgba(14,165,233,0.10);transform:translateY(-2px);border-color:rgba(14,165,233,0.28)}
+
+.input-group{margin-bottom:14px}
+.input-group label{display:block;margin-bottom:8px;font-weight:500;color:var(--muted)}
+.input-group input{width:100%;padding:12px;border-radius:10px;border:none;background:rgba(255,255,255,0.04);color:#fff;font-size:15px}
+
+.actions{display:flex;gap:10px;margin-top:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 14px;border-radius:10px;text-decoration:none;border:none;cursor:pointer;font-weight:600}
+.btn--primary{flex:1;background:linear-gradient(90deg,#7c3aed,#06b6d4);color:#fff;box-shadow:0 8px 24px rgba(6,182,212,0.12);transition:transform .12s}
+.btn--primary:hover{transform:translateY(-3px)}
+.btn--ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);min-width:150px}
+.btn.full{width:100%}
+
+.msg{min-height:20px;margin-top:12px;color:#ffd;opacity:0.95}
+.muted{color:var(--muted);font-size:13px}
+.card-foot{margin-top:14px;text-align:center}
+
+#welcome{font-size:18px;margin:8px 0}
+#userInfo{color:var(--muted);font-size:13px}
+
+.link-text{text-align:center;margin-top:16px}
+.link-text a{color:#fff;font-weight:600;text-decoration:none}
+.link-text a:hover{text-decoration:underline}
+
+@media(max-width:500px){
+  .card,.login-box{width:92%;padding:20px}
+  .actions{flex-direction:column}
+  .btn--ghost{width:100%}
+}
+
+/* Split card */
+.card--split{padding:0;overflow:hidden}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.card-illustration{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+.small-illus{padding:14px}
+.blob{width:100%;height:100%;max-width:320px;max-height:320px}
+.illus-caption{color:var(--muted);margin-top:12px;font-size:13px}
+
+/* input with icon */
+.input-icon{display:flex;align-items:center;gap:10px}
+.input-icon .icon{width:18px;height:18px;opacity:0.9;color:rgba(255,255,255,0.9)}
+.input-icon input{flex:1;border-radius:10px;padding:12px 10px}
+
+/* subtle hover for illustration */
+.card-illustration .blob{transition:transform .9s cubic-bezier(.16,.8,.35,1)}
+.card-illustration:hover .blob{transform:scale(1.02) rotate(-4deg)}
+
+@media(max-width:880px){
+  .card-grid{grid-template-columns:1fr}
+  .card-illustration{order:2}
+  .card-form{order:1;padding:20px}
+}
